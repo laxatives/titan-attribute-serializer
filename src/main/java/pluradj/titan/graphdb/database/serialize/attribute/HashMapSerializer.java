@@ -18,13 +18,11 @@ public class HashMapSerializer implements AttributeSerializer<HashMap> {
     private ByteArraySerializer serializer;
 
     public HashMapSerializer() {
-        System.out.println("*** HashMapSerializer constructor");
         serializer = new ByteArraySerializer();
     }
 
     @Override
     public HashMap read(ScanBuffer buffer) {
-        System.out.println("*** HashMapSerializer read");
         HashMap attribute = null;
         byte[] data = serializer.read(buffer);
         // http://docs.oracle.com/javase/8/docs/technotes/guides/language/try-with-resources.html
@@ -42,7 +40,6 @@ public class HashMapSerializer implements AttributeSerializer<HashMap> {
 
     @Override
     public void write(WriteBuffer buffer, HashMap attribute) {
-        System.out.println("*** HashMapSerializer write");
         try (
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(baos);
